@@ -89,6 +89,9 @@ export default Component.extend({
       if (modalEl && modalEl.contains(target)) {
         return;
       }
+      if (this.get('shouldIgnoreCloseClick') && this.get('shouldIgnoreCloseClick')(modalEl, target)) {
+        return;
+      }
       if (this.get('onClose')) {
         this.get('onClose')();
       }
